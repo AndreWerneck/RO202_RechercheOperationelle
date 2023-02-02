@@ -73,8 +73,6 @@ def dijkstra(g, origin):
                        pi[i_node.id2] = 0
                    pi[i_node.id2] = i_node.weight + pi[pivot] # filling the pi table for the current pivot
                    pred[i_node.id2] = pivot
-                   # if i_node.id2 != pivot:
-                   #     pred[i_node.id2] = pivot
 
            v2.append(pivot) # append the older pivot
            aux=[]
@@ -82,10 +80,8 @@ def dijkstra(g, origin):
                if i_v not in v2:
                    aux.append(pi[i_v])
            pivot = pi.index(min(aux)) # update the pivot with the minimum value of pi
-
            i_i = 0
            while pivot in v2:  # pivot is a repeated number (as 6 for our first example)
-
                indexes = np.where(np.array(pi)==pi[pivot])
                aux2 = indexes[0].tolist().copy()
                pivot = aux2[i_i] # chooses the pivot that is not repeated
